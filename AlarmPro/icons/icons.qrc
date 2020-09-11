@@ -1,0 +1,14 @@
+<RCC>
+    <qresource prefix="/icons">
+        <file>alarm/index.theme</file>
+        <file>alarm/32x32/bell-regular.svg</file>
+        <file>alarm/32x32/hourglass-regular.svg</file>
+        <file>alarm/32x32/stopwatch-solid.svg</file>
+        <file>alarm/32x32/user-clock-solid.svg</file>
+        <file>alarm/32x32/plus-solid.svg</file>
+        <file>alarm/32x32/tasks-solid.svg</file>
+        <file>alarm/32x32/times-solid.svg</file>
+        <file>alarm/32x32/trash-alt-regular.svg</file>
+        <file>alarm/32x32/bell-solid.svg</file>
+    </qresource>
+</RCC>

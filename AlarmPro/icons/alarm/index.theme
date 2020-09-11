@@ -1,0 +1,9 @@
+[Icon Theme]
+Name=Alarm
+Comment=Icon theme for the Qt Quick Controls 2 Alarnm
+
+Directories=32x32
+
+[32x32]
+Size=32
+Type=Fixed

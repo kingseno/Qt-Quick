@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/qml">
+        <file>main.qml</file>
+        <file>Alarm/Alarm.qml</file>
+        <file>Alarm/AlarmDelegate.qml</file>
+        <file>Alarm/AlarmDialog.qml</file>
+        <file>Alarm/AlarmModel.qml</file>
+        <file>Alarm/TumblerDelegate.qml</file>
+        <file>CountDown/CountDown.qml</file>
+        <file>StopWatch/StopWatch.qml</file>
+    </qresource>
+</RCC>
