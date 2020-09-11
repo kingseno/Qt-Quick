@@ -16,10 +16,9 @@ void Configuration::setInfoAlarm(const int &infoAlarm) {
     }
 }
 
-void Configuration::saveChanges (QVariantMap alarmMap) {
-    qDebug() << alarmMap.value("cc").toJsonObject().value ("cc").toInt ();
-//        qDebug() << alarmMap.value("model").toString();
-//        qDebug() << alarmMap.value("year").toInt();
+void Configuration::saveChanges (QVariantMap alarmMap[]) {
+    qDebug() << alarmMap[0].value("cc").toJsonObject().value ("cc").toInt ();
+//        qDebug() << alarmMap[0].value("make").toString();
 }
 
 void Configuration::loadAlarms () {

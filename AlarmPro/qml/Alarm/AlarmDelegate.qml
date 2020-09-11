@@ -19,8 +19,10 @@ ItemDelegate {
 
 //        console.log(config.infoAlarm)
 //        console.log(model.year)
-var myCar = {make: "Ford", model: "Mustang", year: 1969, cc: {cc: 123} }
-                config.saveChanges(myCar);
+var myCar = [{make: "Ford", model: "Mustang", year: 1969, cc: {cc: 123} },
+             {make: "Ford", model: "Mustang", year: 1969, cc: {cc: 123} }]
+
+          config.saveChanges(myCar);
     }
 
     onClicked: ListView.view.currentIndex = index
@@ -151,6 +153,26 @@ var myCar = {make: "Ford", model: "Mustang", year: 1969, cc: {cc: 123} }
             onAccepted: {
                 root.checkable = true
                 root.checked = false
+
+                var infoFromListModel = []
+//                for(var i = 0 ; i < alarmListView.model.count; i++) {
+//                    infoFromListModel.push({
+//                       hour: alarmListView.model.get(i).hour,
+//                       minute: alarmListView.model.get(i).minute,
+//                       day: alarmListView.model.get(i).day,
+//                       month: alarmListView.model.get(i).month,
+//                       year: alarmListView.model.get(i).year,
+//                       activated: alarmListView.model.get(i).activated,
+//                       label: alarmListView.model.get(i).label,
+//                       repeat: alarmListView.model.get(i).repeat
+////                                               ,
+////                       daysToRepeat: [
+////                        {},
+
+////                       ]
+//                    })
+////                 console.log(alarmListView.model.get(i).daysToRepeat.get(0).repeat)
+//                }
 
 
             }

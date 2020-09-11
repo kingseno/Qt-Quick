@@ -6,6 +6,9 @@
 #include <QJsonParseError>
 #include <QJsonDocument>
 #include <QJsonObject>
+#include <iostream>
+#include <vector>
+using namespace std;
 
 class Configuration : public QObject
 {
@@ -21,7 +24,7 @@ signals:
     void infoAlarmChanged();
 
 public slots:
-    void saveChanges(QVariantMap alarmMap);
+    void saveChanges(QVariantMap alarmMap[]);
     void loadAlarms();
 
 private:
