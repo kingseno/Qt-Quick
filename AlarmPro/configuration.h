@@ -24,7 +24,8 @@ signals:
     void infoAlarmChanged();
 
 public slots:
-    void saveChanges(QVariantMap alarmMap[]);
+    void saveChanges(QVariantMap alarmMap);
+    void confirmStatusOfChanges();
     void loadAlarms();
 
 private:

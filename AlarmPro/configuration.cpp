@@ -16,12 +16,17 @@ void Configuration::setInfoAlarm(const int &infoAlarm) {
     }
 }
 
-void Configuration::saveChanges (QVariantMap alarmMap[]) {
-    qDebug() << alarmMap[0].value("cc").toJsonObject().value ("cc").toInt ();
-//        qDebug() << alarmMap[0].value("make").toString();
+void Configuration::saveChanges (QVariantMap alarmMap) {
+//    qDebug() << alarmMap.value("daysToRepeat").toJsonObject().value("dayOfWeek").toString();
+        //qDebug() << alarmMap.value("hour").toString();
+    qDebug() << alarmMap;
 }
 
 void Configuration::loadAlarms () {
+
+}
+
+void Configuration::confirmStatusOfChanges() {
 
 }
 
