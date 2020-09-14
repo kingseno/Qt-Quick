@@ -17,20 +17,12 @@ ItemDelegate {
     checkable: true
     onPressAndHold:  {
 
-//        console.log(config.infoAlarm)
-//        console.log(model.year)
-//var myCar = [{make: "Ford", model: "Mustang", year: 1969, cc: {cc: 123} },
-//             {make: "Ford", model: "Mustang", year: 1969, cc: {cc: 123} }]
-
-//          config.saveChanges(myCar);
     }
 
     onClicked: ListView.view.currentIndex = index
 
-
     contentItem: ColumnLayout {
         spacing: 0
-//        Layout.bottomMargin: 20
         id: alarmElement
 
         RowLayout {
@@ -38,7 +30,8 @@ ItemDelegate {
                 id: dateColumn
 
                 readonly property date alarmDate: new Date(
-                    model.year, model.month - 1, model.day, model.hour, model.minute)
+                    model.year, model.month - 1, model.day, model.hour,
+                                                      model.minute)
 
                 Label {
                     id: timeLabel
@@ -154,62 +147,40 @@ ItemDelegate {
                 root.checkable = true
                 root.checked = false
 
-                var infoFromListModel
-                for(var i = 0 ; i < 1; i++) {
-                    infoFromListModel = {
-                       hour: alarmListView.model.get(i).hour,
-                       minute: alarmListView.model.get(i).minute,/*
-                       day: alarmListView.model.get(i).day,
-                       month: alarmListView.model.get(i).month,
-                       year: alarmListView.model.get(i).year,
-                       activated: alarmListView.model.get(i).activated,
-                       label: alarmListView.model.get(i).label,
-                       repeat: alarmListView.model.get(i).repeat,*/
-                       daysToRepeat: [
-                            { dayOfWeek: alarmListView.model.get(i).daysToRepeat.get(0).dayOfWeek,
-                                repeat: alarmListView.model.get(i).daysToRepeat.get(0).repeat },
-                            { dayOfWeek: alarmListView.model.get(i).daysToRepeat.get(1).dayOfWeek,
-                                repeat: alarmListView.model.get(i).daysToRepeat.get(1).repeat }
-                        ]
-                    }
-                    config.saveChanges(infoFromListModel)
-                }
+                alarmListView.sendInfoToCplusplus()
 
-                var infoFromListModel = []
-                for(var i = 0 ; i < alarmListView.model.count; i++) {
-                    infoFromListModel.push({
-                       hour: alarmListView.model.get(i).hour,
-                       minute: alarmListView.model.get(i).minute,
-                       day: alarmListView.model.get(i).day,
-                       month: alarmListView.model.get(i).month,
-                       year: alarmListView.model.get(i).year,
-                       activated: alarmListView.model.get(i).activated,
-                       label: alarmListView.model.get(i).label,
-                       repeat: alarmListView.model.get(i).repeat,
-                       daysToRepeat: [
-                        { dayOfWeek: alarmListView.model.get(i).daysToRepeat.get(0).dayOfWeek,
-                          repeat: alarmListView.model.get(i).daysToRepeat.get(0).repeat }
-
-                       ]
-                    })
-                }
-                config.saveChanges(infoFromListModel)
             }
         }
-        RoundButton {
-            id: deleteAlarmButton
-            text: qsTr("Delete")
-            Layout.topMargin: 5
-            Layout.preferredWidth: 120
-            height: 40
-            radius: 20
-            visible: root.checked
-            onClicked: {
-                root.ListView.view.model.remove(root.ListView.view.currentIndex, 1)
-//                for(var i = 0; i < root.ListView.view.model.count; i++) {
-//                    console.log(alarmListView.model.get(i).daysToRepeat.get(0).repeat)
-//                }
+        RowLayout {
+            Layout.alignment: Qt.AlignHCenter
+            RoundButton {
+                id: saveAlarmButton
+                text: qsTr("SAVE")
+                Layout.topMargin: 5
+                Layout.preferredWidth: 160
+                height: 40
+                radius: 20
+                visible: root.checked
+                onClicked: {
+                    root.checkable = true
+
+                    alarmListView.sendInfoToCplusplus()
+                }
+            }
+            RoundButton {
+                id: deleteAlarmButton
+                text: qsTr("Delete")
+                Layout.topMargin: 5
+                Layout.preferredWidth: 160
+                height: 40
+                radius: 20
+                visible: root.checked
+                onClicked: {
+                    root.ListView.view.model.remove(root.ListView.view.currentIndex, 1)
+                    alarmListView.sendInfoToCplusplus()
+                }
             }
         }
     }
 }
+

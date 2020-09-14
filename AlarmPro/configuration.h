@@ -6,30 +6,27 @@
 #include <QJsonParseError>
 #include <QJsonDocument>
 #include <QJsonObject>
-#include <iostream>
-#include <vector>
-using namespace std;
 
 class Configuration : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(int infoAlarm READ infoAlarm WRITE setInfoAlarm NOTIFY infoAlarmChanged)
 public:
-    explicit Configuration(QObject *parent = nullptr);
+    explicit Configuration (QObject *parent = nullptr);
 
-    int infoAlarm() const;
-    void setInfoAlarm(const int &infoAlarm);
+    int infoAlarm () const;
+    void setInfoAlarm (const int &infoAlarm);
 
 signals:
-    void infoAlarmChanged();
+    void infoAlarmChanged ();
 
 public slots:
-    void saveChanges(QVariantMap alarmMap);
-    void confirmStatusOfChanges();
-    void loadAlarms();
+    void saveChanges (QVariantList alarmInfo);
+    QJsonObject loadAlarms ();
 
 private:
     int m_infoAlarm;
+    void checkConfiguration();
 };
 
 

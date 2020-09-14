@@ -15,6 +15,54 @@ Item {
         anchors.fill: parent
         model: AlarmModel {}
         delegate: AlarmDelegate {}
+
+        function sendInfoToCplusplus() {
+            var infoFromListModel = []
+            for(var i = 0 ; i < alarmListView.model.count; i++) {
+                infoFromListModel.push({
+                   hour: alarmListView.model.get(i).hour,
+                   minute: alarmListView.model.get(i).minute,
+                   day: alarmListView.model.get(i).day,
+                   month: alarmListView.model.get(i).month,
+                   year: alarmListView.model.get(i).year,
+                   activated: alarmListView.model.get(i).activated,
+                   label: alarmListView.model.get(i).label,
+                   repeat: alarmListView.model.get(i).repeat,
+                   daysToRepeat: [
+                        { dayOfWeek: alarmListView.model.get(i).
+                                                   daysToRepeat.get(0).dayOfWeek,
+                            repeat: alarmListView.model.get(i).
+                                                   daysToRepeat.get(0).repeat },
+                        { dayOfWeek: alarmListView.model.get(i).
+                                                   daysToRepeat.get(1).dayOfWeek,
+                            repeat: alarmListView.model.get(i).
+                                                   daysToRepeat.get(1).repeat },
+                        { dayOfWeek: alarmListView.model.get(i).
+                                                   daysToRepeat.get(2).dayOfWeek,
+                            repeat: alarmListView.model.get(i).
+                                                   daysToRepeat.get(2).repeat },
+                        { dayOfWeek: alarmListView.model.get(i).
+                                                   daysToRepeat.get(3).dayOfWeek,
+                            repeat: alarmListView.model.get(i).
+                                                   daysToRepeat.get(3).repeat },
+                        { dayOfWeek: alarmListView.model.get(i).
+                                                   daysToRepeat.get(4).dayOfWeek,
+                            repeat: alarmListView.model.get(i).
+                                                   daysToRepeat.get(4).repeat },
+                        { dayOfWeek: alarmListView.model.get(i).
+                                                   daysToRepeat.get(5).dayOfWeek,
+                            repeat: alarmListView.model.get(i).
+                                                   daysToRepeat.get(5).repeat },
+                        { dayOfWeek: alarmListView.model.get(i).
+                                                   daysToRepeat.get(6).dayOfWeek,
+                            repeat: alarmListView.model.get(i).
+                                                   daysToRepeat.get(6).repeat }
+                    ]
+                })
+            }
+
+            config.saveChanges(infoFromListModel)
+        }
     }
 
     RoundButton {
@@ -55,7 +103,8 @@ Item {
         Text {
             id: notificationText
             anchors.centerIn: parent
-            text: "Alarm will go off in 8 hours and 30 minutes" // \n to break a new line
+            text: "Alarm will go off in 8 hours and 30 minutes"
+            width: parent.width * 0.9
             font.pixelSize: Qt.application.font.pixelSize * 1.4
             color: "white"
             wrapMode: Text.WordWrap

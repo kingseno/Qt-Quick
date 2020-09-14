@@ -41,6 +41,7 @@ Dialog {
                 { "dayOfWeek": 6, "repeat": false }
             ],
         })
+        alarmListView.sendInfoToCplusplus()
     }
     onRejected: alarmDialog.close()
 

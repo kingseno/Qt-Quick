@@ -15,7 +15,8 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         configuration.cpp \
-        main.cpp
+        main.cpp \
+        mytimer.cpp
 
 RESOURCES += \
  icons/icons.qrc \
@@ -33,4 +34,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
- configuration.h
+ configuration.h \
+ mytimer.h
