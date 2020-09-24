@@ -15,11 +15,11 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         configuration.cpp \
-        main.cpp \
-        mytimer.cpp
+        main.cpp
 
 RESOURCES += \
  icons/icons.qrc \
+ music/music.qrc \
  qml/qml.qrc \
  qtquickcontrols2.conf
 # Additional import path used to resolve QML modules in Qt Creator's code model
@@ -34,5 +34,4 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
- configuration.h \
- mytimer.h
+ configuration.h

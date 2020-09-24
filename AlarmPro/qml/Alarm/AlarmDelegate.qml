@@ -1,7 +1,33 @@
 /****************************************************************************
+** Project                  = Alarm13 Super ProMax
+** Author                   = Dinh Pham
+** Version                  = V1.0.0
+** Date                     = 23/09/2020
 **
-** Author: Dinh Pham
-** Desciption:
+*****************************************************************************
+** Purpose of this file:
+**
+*****************************************************************************
+** Lisense
+**
+** THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+** "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+** LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+** A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+** OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+** SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+** LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+** DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+** THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+** (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+** OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE."
+**
+** Copyright (C) 2020 by Dinh Pham
+**
+*****************************************************************************
+**                      Revision Control History
+** V1.0.0:  23/09/2020  : Initial version.
+**
 ****************************************************************************/
 
 import QtQuick 2.12
@@ -9,17 +35,18 @@ import QtQuick.Controls 2.5
 import QtQuick.Controls.Material 2.4
 import QtQuick.Layouts 1.3
 import QtQuick.Window 2.3
-
+import "../Util/Util.mjs" as Util
 
 ItemDelegate {
     id: root
     width: parent.width
     checkable: true
-    onPressAndHold:  {
-
+    onPressAndHold: {
+//        Util.printf()
+        alarmListView.handleAlarm()
     }
 
-    onClicked: ListView.view.currentIndex = index
+    onClicked: {ListView.view.currentIndex = index}
 
     contentItem: ColumnLayout {
         spacing: 0
@@ -29,9 +56,11 @@ ItemDelegate {
             ColumnLayout {
                 id: dateColumn
 
+//                readonly property date alarmDate: new Date(
+//                    model.year, model.month - 1, model.day, model.hour,
+//                                                      model.minute)
                 readonly property date alarmDate: new Date(
-                    model.year, model.month - 1, model.day, model.hour,
-                                                      model.minute)
+                    0, 0, 0, model.hour, model.minute)
 
                 Label {
                     id: timeLabel
@@ -39,17 +68,22 @@ ItemDelegate {
                     text: dateColumn.alarmDate
                     .toLocaleTimeString(window.locale, Locale.ShortFormat)
                 }
-                RowLayout {
-                    Label {
-                        id: dateLabel
-                        text: dateColumn.alarmDate
-                        .toLocaleDateString(window.locale, Locale.ShortFormat)
-                    }
-                    Label {
-                        id: alarmAbout
-                        text: "-> " + model.label
-                        visible: model.label.length > 0 && !root.checked
-                    }
+//                RowLayout {
+//                    Label {
+//                        id: dateLabel
+//                        text: dateColumn.alarmDate
+//                        .toLocaleDateString(window.locale, Locale.ShortFormat)
+//                    }
+//                    Label {
+//                        id: alarmAbout
+//                        text: "-> " + model.label
+//                        visible: model.label.length > 0 && !root.checked
+//                    }
+//                }
+                Label {
+                    id: alarmAbout
+                    text: "-> " + model.label
+                    visible: model.label.length > 0 && !root.checked
                 }
             }
             Item {
@@ -67,14 +101,14 @@ ItemDelegate {
                     // can't return a object from function as javascript
                     // so I must write code directly in here
                     // this block of code is to get remain time to show the notification
-                    var currentTime = new Date()
+                    let currentTime = new Date()
                     currentTime = currentTime.getHours() * 60
                                   + currentTime.getMinutes()
 
-                    var alarmTime = dateColumn.alarmDate.getHours() * 60
+                    let alarmTime = dateColumn.alarmDate.getHours() * 60
                                     + dateColumn.alarmDate.getMinutes()
 
-                    var remainTime = {
+                    let remainTime = {
                         hours: (alarmTime - currentTime) / 60,
                         minutes: (alarmTime - currentTime) % 60
                     }
@@ -97,11 +131,13 @@ ItemDelegate {
 //                        notification.opacity = 0
 //                        alarm.state = "hideNotification"
 //                    }
+
                     if (checked) {
                         showAnimation.start()
                         timer.delay(3000, hideAnimation.start)
                     }
 
+                    alarmListView.sendInfoToCplusplus()
                 }
                 Component.onCompleted: checked ? alarmElement.opacity = 1
                                                : alarmElement.opacity = 0.3
@@ -148,7 +184,6 @@ ItemDelegate {
                 root.checked = false
 
                 alarmListView.sendInfoToCplusplus()
-
             }
         }
         RowLayout {
