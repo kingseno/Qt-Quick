@@ -39,6 +39,7 @@ import QtMultimedia 5.15
 
 Item {
     id: alarmScreen
+
     ListView {
         id: alarmListView
         anchors.margins: 5
@@ -47,6 +48,8 @@ Item {
         delegate: AlarmDelegate {}
 
 //        onCurrentItemChanged: alarmListView.handleAlarm()
+        signal signalToDestroyTimer
+//        onSignalToDestroyTimer: console.log("Signal is emitted in main QML")
 
         function sendInfoToCplusplus() {
             let infoFromListModel = []
@@ -213,7 +216,7 @@ Item {
                         } else {
                             // this code to handle bug which happens when
                             // 0 < currentTime - alarmTime < 7 hours
-                            var timeBug =
+                            let timeBug =
                                 (currentTime.getHours() * 3600 + currentTime.getMinutes() * 60
                                  + currentTime.getSeconds())
                                 - (alarmTime.getHours() * 3600 + alarmTime.getMinutes() * 60
@@ -238,46 +241,63 @@ Item {
                     console.log("Remain Time: ", JSON.stringify(remainingTime))
 
                 }
+
+                //trigger and display notification
+
+                console.log("Remain Time by seconds: ", remainingTime.getRemainingTimeBySeconds())
+
+                let objString =
+                                'import QtQuick 2.12
+                                import QtQuick.Controls 2.5
+
+                                Timer {
+                                    id: timer1
+                                    function delay(delayTime, callBackFunction) {
+                                        interval = delayTime
+                                        repeat = false
+                                        triggered.connect(callBackFunction)
+                                        triggered.connect(function release () {
+                                            triggered.disconnect(callBackFunction)
+                                            triggered.disconnect(release)
+                                        })
+                                        start()
+                                    }
+
+                                    function destroyTimer() {
+                                        if (timer1) {
+                                            timer1.destroy()
+                                            console.log("Alarm is turned off")
+                                        }
+                                    }
+
+                                    Component.onCompleted: {
+                                        alarmListView.signalToDestroyTimer.connect(destroyTimer);
+                                    }
+                                }'
+
+                let newTimer = Qt.createQmlObject(
+                            objString,
+                            alarmListView,
+                            "Error to Create timer");
+
+                function displayAlarm() {
+                    popup.open()
+                    shakeText.text = "Alarm " +  alarmTime
+                        .toLocaleTimeString(window.locale, Locale.ShortFormat)
+                    shakeBellAnimation.start()
+                    playMusic.play()
+                }
+
+                newTimer.delay(1000 * remainingTime.getRemainingTimeBySeconds(), displayAlarm)
+
             }
-
-            //trigger and display notification
-
-            console.log("Remain Time by seconds: ", remainingTime.getRemainingTimeBySeconds())
-
-            let objString =
-                            "import QtQuick 2.12
-                            import QtQuick.Controls 2.5
-
-                            Timer {
-                                id: timer1
-                                function delay(delayTime, callBackFunction) {
-                                    interval = delayTime
-                                    repeat = false
-                                    triggered.connect(callBackFunction)
-                                    triggered.connect(function release () {
-                                        triggered.disconnect(callBackFunction)
-                                        triggered.disconnect(release)
-                                    })
-                                    start()
-                                }
-                            }"
-
-            let newTimer = Qt.createQmlObject(
-                        objString,
-                        alarmScreen,
-                        "error.txt");
-
-            function displayAlarm() {
-                popup.open()
-                shakeText.text = "Alarm " +  alarmTime
-                    .toLocaleTimeString(window.locale, Locale.ShortFormat)
-                shakeBellAnimation.start()
-                playMusic.play()
-            }
-
-            newTimer.delay(1000 * remainingTime.getRemainingTimeBySeconds(), displayAlarm)
 
         }
+
+        function destroyTimerFromOutside() {
+            signalToDestroyTimer()
+        }
+
     }
 
     RoundButton {
@@ -483,7 +503,7 @@ Item {
                 onClicked: {
                     popup.close()
                     playMusic.stop()
-//                    alarmListView.handleAlarm()
+                    alarmListView.handleAlarm()
                 }
             }
 
@@ -514,6 +534,7 @@ Item {
         source: alarmListView;
         radius: 8
         samples: 16
+        deviation: 20
     }
 
     Audio {

@@ -8,9 +8,9 @@ Step 3: create list of timer object in qml to contain for each alarm
 Step 4: handle logic
 
 3. Handle alarm notification in the following cases:
-- Launch app: load in AlarmModel
-- Create new alarm in AlarmDialog
+- Launch app: load in AlarmModel done
+- Create new alarm in AlarmDialog done
 - Delete a alarm
 - When saving a modified alarm
 - When turn off a alarm notification
-- When switching  => re-run function: handleAlarm(): in AlarmDelegate 136
+- When switching  => re-run function: handleAlarm(): in AlarmDelegate 136 done

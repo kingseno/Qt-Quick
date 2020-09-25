@@ -42,6 +42,13 @@ ListModel {
     id: alarmModel
 
     Component.onCompleted: {
+//        function handleAlarmSync() {
+//            return new Promise(function(resolve, reject) {
+//                alarmListView.model.append(config.loadAlarms().config)
+//            })
+//        }
+//        handleAlarmSync()
+//        .then(function(data) {alarmListView.handleAlarm()})
         alarmListView.model.append(config.loadAlarms().config)
         alarmListView.handleAlarm()
     }

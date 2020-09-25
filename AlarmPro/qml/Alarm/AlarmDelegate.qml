@@ -132,13 +132,15 @@ ItemDelegate {
 //                        alarm.state = "hideNotification"
 //                    }
 
+                    checked ? alarmListView.handleAlarm() : alarmListView.destroyTimerFromOutside()
+
                     if (checked) {
-                        alarmListView.handleAlarm()
                         showAnimation.start()
                         timer.delay(3000, hideAnimation.start)
                     } else {
 
                     }
+
 
                     alarmListView.sendInfoToCplusplus()
 
