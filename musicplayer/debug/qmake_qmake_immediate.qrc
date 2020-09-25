@@ -1,0 +1,7 @@
+<!DOCTYPE RCC><RCC version="1.0">
+<qresource prefix="/">
+<file alias="images/album-cover.jpg">C:/Qt/Qt5.14.2/Examples/Qt-5.14.2/quickcontrols2/imagine/musicplayer/images/album-cover.jpg</file>
+<file alias="qtquickcontrols2.conf">C:/Qt/Qt5.14.2/Examples/Qt-5.14.2/quickcontrols2/imagine/musicplayer/qtquickcontrols2.conf</file>
+<file alias="musicplayer.qml">C:/Qt/Qt5.14.2/Examples/Qt-5.14.2/quickcontrols2/imagine/musicplayer/musicplayer.qml</file>
+</qresource>
+</RCC>
