@@ -1,0 +1,15 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>Setting.qml</file>
+        <file>ButtonBar.qml</file>
+        <file>AirPanel.qml</file>
+        <file>images/alarm.png</file>
+        <file>TimePicker.qml</file>
+        <file>UserList.qml</file>
+        <file>TimerSave.qml</file>
+        <file>images/power.png</file>
+        <file>ConfigSave.qml</file>
+        <file>images/setting.png</file>
+    </qresource>
+</RCC>

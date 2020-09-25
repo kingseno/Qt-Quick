@@ -1,0 +1,61 @@
+import QtQuick 2.0
+import QtQuick.Layouts 1.14
+import QtQuick.Controls 2.4
+import BackEnd 1.0
+
+RowLayout {
+    id: btnAir
+    anchors.left: parent.left
+    anchors.right: parent.right
+    anchors.margins: 120
+//    property HandleKey handleKey: null
+
+    RoundButton {
+        onClicked: handleKey.handleKeyPower()
+        Image {
+            sourceSize.width: 40
+            sourceSize.height: 40
+            source: "qrc:/images/power"
+        }
+    }
+    property RoundButton someItem : btnAdd
+    RoundButton {
+        id: btnAdd
+        enabled: true
+        text: "+"
+        onClicked:{
+            hardware.setFan(Custom.LEVEL3)
+            handleKey.handleKeyUp()
+        }
+    }
+    RoundButton {
+        id: btnSub
+        enabled: true
+        text: "-"
+        onClicked: handleKey.handleKeyDown()
+    }
+    RoundButton {
+        text: "Setting"
+        onClicked: scrSettinng()
+    }
+    RoundButton {
+        text: "AUTO"
+        onClicked: scrUserList()
+    }
+    function scrSettinng() {
+        btnAdd.enabled = true;
+        btnSub.enabled  = true;
+        userList.visible = false;
+        settingAir.visible = true;
+        panel.visible = false;
+        handleKey.handleKeySetting()
+    }
+    function scrUserList() {
+        settingAir.visible = false;
+        settingAir.visible = false;
+        userList.visible = true;
+        btnAdd.enabled = !userList.visible;
+        btnSub.enabled  = !userList.visible;
+        handleKey.handleKeyAuto();
+    }
+}

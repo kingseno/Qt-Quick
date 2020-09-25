@@ -1,0 +1,273 @@
+import QtQuick 2.4
+import QtQuick.Controls 2.4
+import QtQuick.Layouts 1.14
+
+Rectangle {
+    id: setting
+    visible: false;
+    width: 490
+    height: 325
+    anchors.margins: 5
+    antialiasing: true
+    border.color: "black"
+
+    radius: 10
+
+    gradient: Gradient {
+        GradientStop { position: 0.0; color: "gray" }
+        GradientStop { position: 1.0; color: "white" }
+    }
+
+    Text{
+        id: warning
+        text: "Fill name"
+        font.pixelSize : 15
+        x: 400
+        y: 20
+        visible: false
+        color:  "Red"
+    }
+
+    TimerSave{
+        id: savetime
+    }
+
+    Column
+    {
+        y:15
+        x:20
+        spacing: 2
+        RowLayout {
+        spacing: 1
+            Text {
+                text:qsTr("Mode Name: ")
+                font.pixelSize : 20
+            }
+            TextInput {
+                maximumLength: 20
+                id: textEdit
+                    width: 250
+                    height: 50
+                    font.pixelSize : 20
+                    property string placeholderText: "Enter mode name here..."
+                    Text {
+                        text: textEdit.placeholderText
+                        color: "white"
+                        visible: !textEdit.text
+                        font.pixelSize : 20
+                    }
+            }
+        }
+
+        RowLayout {
+            Text {
+                text:qsTr("Temperature: ")
+                font.pixelSize : 20
+            }
+            Slider {
+                id:sld
+                from: 0
+                value: handleKey.getTemp
+                to: 35
+                stepSize: 1
+                snapMode: Slider.SnapAlways;
+            }
+            Text {
+                text: sld.value
+                font.pixelSize : 15
+            }
+        }
+        RowLayout {
+            height: 40
+            Text {
+                text:qsTr("FAN speed: ")
+                font.pixelSize : 20
+            }
+            Rectangle{
+                x: 170
+                SpinBox {
+                    from: 0
+                    to: items.length - 1
+                    value: 1 // "Medium"
+
+                    property var items: ["LOW", "MEDIUM", "HIGH"]
+
+                    textFromValue: function(value) {
+                        return items[value];
+                    }
+
+                    valueFromText: function(text) {
+                        for (var i = 0; i < items.length; ++i) {
+                            if (items[i].toLowerCase().indexOf(text.toLowerCase()) === 0)
+                                return i
+                        }
+                        return sb.value
+                    }
+                }
+            }
+         }
+        RowLayout {
+            height: 40
+            Text {
+                text:qsTr("Swing: ")
+                font.pixelSize : 20
+            }
+            Rectangle{
+                x: 170
+                SpinBox {
+                    from: 0
+                    to: items.length - 1
+                    value: 2 // "AUTO"
+
+                    property var items: ["UP", "DOWN", "AUTO"]
+
+
+                    textFromValue: function(value) {
+                        return items[value];
+                    }
+
+                    valueFromText: function(text) {
+                        for (var i = 0; i < items.length; ++i) {
+                            if (items[i].toLowerCase().indexOf(text.toLowerCase()) === 0)
+                                return i
+                        }
+                        return sb.value
+                    }
+                }
+            }
+         }
+        RowLayout {
+            height: 40
+            Text {
+                text:qsTr("Operation mode: ")
+                font.pixelSize : 20
+            }
+            Rectangle{
+                x: 170
+                SpinBox {
+                    from: 0
+                    to: items.length - 1
+                    value: 0 // "AUTO"
+
+                    property var items: ["NORMAL", "FRESH", "DRY"]
+
+
+                    textFromValue: function(value) {
+                        return items[value];
+                    }
+
+                    valueFromText: function(text) {
+                        for (var i = 0; i < items.length; ++i) {
+                            if (items[i].toLowerCase().indexOf(text.toLowerCase()) === 0)
+                                return i
+                        }
+                        return sb.value
+                    }
+                }
+            }
+         }
+        RowLayout {
+            Text {
+                text:qsTr("Alarm state: ")
+                font.pixelSize : 20
+            }
+            Switch {
+                checked: true
+            }
+        }
+        RowLayout {
+            spacing: 20
+            Text {
+                text:qsTr("Timer: ")
+                font.pixelSize : 20
+            }
+            Text {
+                id:timer
+                text: savetime.save
+                font.pixelSize : 20
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: {
+                        timePicker.visible = true;
+                        setting.enabled = false;
+                        buttonBar.enabled = false;
+                    }
+                }
+                TimePicker {
+                    id: timePicker
+                    visible: false;
+                    target: savetime
+                }
+
+            }
+        }
+       RowLayout {
+           x:65
+           spacing: 20
+           height: 15
+           Button {
+               text: "OK"
+               font.pixelSize: 20
+               palette {
+                   button: "#fbf2d4"
+               }
+               onClicked: btnOK()
+               function btnOK() {
+                   textEdit.text = "";
+                   userList.visible = false;
+                   settingAir.visible = false;
+                   panel.visible = true;
+                   sld.handle = handleKey.setTemp(sld.value)
+
+               }
+           }
+           Button {
+               text: "Save"
+               font.pixelSize: 20
+               palette {
+                   button: "#fbf2d4"
+               }
+               ConfigSave{
+                   id: configqs
+                   visible : false;
+                   target: savetime
+               }
+
+               onClicked: btnSave()
+               function btnSave() {
+//                   userList.visible = false;
+                   if(textEdit.text == "") {
+                       warning.visible = true;
+                       return;
+                   }
+                   warning.visible = false;
+                   var list = config.current_listConfigName;
+                   console.log(list);
+                   if(list.includes(textEdit.text)) {
+                       configqs.visible = true;
+                       setting.enabled = false;
+                       buttonBar.enabled = false;
+                   }
+                   else {
+                         // tode save config
+                   }
+
+               }
+           }
+           Button {
+               text: "Cancel"
+               font.pixelSize: 20
+               palette {
+                   button: "#fbf2d4"
+               }
+               onClicked: btnCanel()
+               function btnCanel() {
+                   userList.visible = false;
+                   settingAir.visible = false;
+                   panel.visible = true;
+               }
+           }
+       }
+    }
+}
+

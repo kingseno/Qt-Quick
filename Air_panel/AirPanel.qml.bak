@@ -1,0 +1,111 @@
+import QtQuick 2.14
+import QtQuick.Window 2.14
+import QtQuick.Layouts 1.14
+import BackEnd 1.0
+
+Item {
+    id: info
+    visible: !settingAir.visible
+//    property HandleKey handleKey: null
+
+    RowLayout {
+        Text {
+            text:qsTr("POWER: ")
+            topPadding: 60
+            leftPadding: 40
+            font.pixelSize : 20
+        }
+        Text {
+            text:qsTr("ON")
+            topPadding: 60
+            font.pixelSize : 20
+        }
+        Text {
+            text:qsTr("Mode : ")
+            topPadding: 60
+            leftPadding: 10
+            font.pixelSize : 20
+        }
+        Text {
+            text:qsTr("NORMAL")
+            topPadding: 60
+            font.pixelSize : 20
+        }
+        Text {
+            text:qsTr("Alarm state: ")
+            topPadding: 60
+            leftPadding: 10
+            font.pixelSize : 20
+        }
+        Text {
+            text:qsTr("ON")
+            topPadding: 60
+            font.pixelSize : 20
+        }
+    }
+    RowLayout {
+        Text {
+            id: temp
+            text: handleKey.getTemp
+            topPadding: 110
+            leftPadding: 120
+            color: "red"
+            font.pixelSize : 100
+        }
+        Text {
+            text: qsTr("°C")
+            color: "red"
+            topPadding: 110
+            leftPadding: 10
+            font.pixelSize : 100
+        }
+    }
+    RowLayout {
+        Text {
+            text:qsTr("Swing: ")
+            topPadding: 275
+            leftPadding: 40
+            font.pixelSize : 20
+        }
+        Text {
+            text:qsTr("UP")
+            topPadding: 275
+            font.pixelSize : 20
+        }
+        Text {
+            text:qsTr("Fan: ")
+            topPadding: 275
+            leftPadding: 10
+            font.pixelSize : 20
+        }
+        Text {
+            text:qsTr("LEVEL1")
+            topPadding: 275
+            rightPadding: 20
+            font.pixelSize : 20
+        }
+
+        Image {
+            anchors.bottom: parent.bottom
+            x: -200
+            sourceSize.width: 30
+            sourceSize.height: 30
+            source: "qrc:/images/alarm"
+        }
+        Text {
+            text:qsTr("15:50")
+            topPadding: 275
+            font.pixelSize : 20
+        }
+//        Text {
+//            text:qsTr("🡆")
+//            topPadding: 275
+//            font.pixelSize : 20
+//        }
+//        Text {
+//            text:qsTr("17:50")
+//            topPadding: 275
+//            font.pixelSize : 20
+//        }
+    }
+}
