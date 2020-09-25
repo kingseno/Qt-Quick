@@ -133,11 +133,15 @@ ItemDelegate {
 //                    }
 
                     if (checked) {
+                        alarmListView.handleAlarm()
                         showAnimation.start()
                         timer.delay(3000, hideAnimation.start)
+                    } else {
+
                     }
 
                     alarmListView.sendInfoToCplusplus()
+
                 }
                 Component.onCompleted: checked ? alarmElement.opacity = 1
                                                : alarmElement.opacity = 0.3

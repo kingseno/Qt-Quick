@@ -33,9 +33,129 @@
                     "repeat": false
                 }
             ],
-            "hour": 17,
+            "hour": 22,
             "label": "",
-            "minute": 56,
+            "minute": 59,
+            "month": 0,
+            "repeat": false,
+            "year": 0
+        },
+        {
+            "activated": true,
+            "day": 0,
+            "daysToRepeat": [
+                {
+                    "dayOfWeek": 0,
+                    "repeat": false
+                },
+                {
+                    "dayOfWeek": 1,
+                    "repeat": false
+                },
+                {
+                    "dayOfWeek": 2,
+                    "repeat": false
+                },
+                {
+                    "dayOfWeek": 3,
+                    "repeat": false
+                },
+                {
+                    "dayOfWeek": 4,
+                    "repeat": false
+                },
+                {
+                    "dayOfWeek": 5,
+                    "repeat": false
+                },
+                {
+                    "dayOfWeek": 6,
+                    "repeat": false
+                }
+            ],
+            "hour": 19,
+            "label": "",
+            "minute": 59,
+            "month": 0,
+            "repeat": false,
+            "year": 0
+        },
+        {
+            "activated": true,
+            "day": 0,
+            "daysToRepeat": [
+                {
+                    "dayOfWeek": 0,
+                    "repeat": false
+                },
+                {
+                    "dayOfWeek": 1,
+                    "repeat": false
+                },
+                {
+                    "dayOfWeek": 2,
+                    "repeat": false
+                },
+                {
+                    "dayOfWeek": 3,
+                    "repeat": false
+                },
+                {
+                    "dayOfWeek": 4,
+                    "repeat": false
+                },
+                {
+                    "dayOfWeek": 5,
+                    "repeat": false
+                },
+                {
+                    "dayOfWeek": 6,
+                    "repeat": false
+                }
+            ],
+            "hour": 18,
+            "label": "",
+            "minute": 59,
+            "month": 0,
+            "repeat": false,
+            "year": 0
+        },
+        {
+            "activated": true,
+            "day": 0,
+            "daysToRepeat": [
+                {
+                    "dayOfWeek": 0,
+                    "repeat": false
+                },
+                {
+                    "dayOfWeek": 1,
+                    "repeat": false
+                },
+                {
+                    "dayOfWeek": 2,
+                    "repeat": false
+                },
+                {
+                    "dayOfWeek": 3,
+                    "repeat": false
+                },
+                {
+                    "dayOfWeek": 4,
+                    "repeat": false
+                },
+                {
+                    "dayOfWeek": 5,
+                    "repeat": false
+                },
+                {
+                    "dayOfWeek": 6,
+                    "repeat": false
+                }
+            ],
+            "hour": 8,
+            "label": "",
+            "minute": 57,
             "month": 0,
             "repeat": false,
             "year": 0

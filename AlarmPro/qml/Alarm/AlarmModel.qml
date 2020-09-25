@@ -41,8 +41,13 @@ import Qt.labs.calendar 1.0
 ListModel {
     id: alarmModel
 
-    Component.onCompleted:
+    Component.onCompleted: {
         alarmListView.model.append(config.loadAlarms().config)
+        alarmListView.handleAlarm()
+    }
+
+//    onDataChanged: alarmListView.handleAlarm()
+
 //    ListElement {
 //        hour: 6
 //        minute: 0

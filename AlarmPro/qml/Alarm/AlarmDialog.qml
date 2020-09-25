@@ -73,6 +73,7 @@ Dialog {
             ],
         })
         alarmListView.sendInfoToCplusplus()
+        alarmListView.handleAlarm()
     }
     onRejected: alarmDialog.close()
 

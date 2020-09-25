@@ -46,6 +46,8 @@ Item {
         model: AlarmModel {}
         delegate: AlarmDelegate {}
 
+//        onCurrentItemChanged: alarmListView.handleAlarm()
+
         function sendInfoToCplusplus() {
             let infoFromListModel = []
             for(let i = 0 ; i < alarmListView.model.count; i++) {
@@ -97,7 +99,7 @@ Item {
         function handleAlarm() {
             //get info from a alarm
             let infoToAlarm = []
-            for (let i = 0 ; i < 1; i++) {
+            for (var i = 0 ; i < alarmListView.model.count; i++) {
                 infoToAlarm.push({
                    hour: alarmListView.model.get(i).hour,
                    minute: alarmListView.model.get(i).minute,
@@ -155,11 +157,12 @@ Item {
                 }
             }
             let minRemainingDays = 9
+            let indexOfLast = infoToAlarm.length - 1
 
-            alarmTime.setHours(infoToAlarm[0].hour, infoToAlarm[0].minute, 0);
+            alarmTime.setHours(infoToAlarm[indexOfLast].hour, infoToAlarm[indexOfLast].minute, 0);
 
-            if (infoToAlarm[0].activated) {
-                if (!infoToAlarm[0].repeat) {
+            if (infoToAlarm[indexOfLast].activated) {
+                if (!infoToAlarm[indexOfLast].repeat) {
                     alarmTime.setDate(currentTime.getDate() + 1)
 
                     deltaTime.setTime(alarmTime.getTime()
@@ -171,17 +174,17 @@ Item {
                     console.log("Remain Time: ", JSON.stringify(remainingTime))
                 } else {
                     let arr = []
-                    for (let i = 0; i < infoToAlarm[0].daysToRepeat.length; i++) {
-                        if (infoToAlarm[0].daysToRepeat[i].repeat) {
-                            if (infoToAlarm[0].daysToRepeat[i].dayOfWeek > currentTime.getDay()) {
+                    for (let i = 0; i < infoToAlarm[indexOfLast].daysToRepeat.length; i++) {
+                        if (infoToAlarm[indexOfLast].daysToRepeat[i].repeat) {
+                            if (infoToAlarm[indexOfLast].daysToRepeat[i].dayOfWeek > currentTime.getDay()) {
 
                                 alarmTime.setDate(currentTime.getDate()
-                                                  + infoToAlarm[0].daysToRepeat[i].dayOfWeek
+                                                  + infoToAlarm[indexOfLast].daysToRepeat[i].dayOfWeek
                                                   - currentTime.getDay())
 
                             } else {
                                 alarmTime.setDate(currentTime.getDate()
-                                                  + infoToAlarm[0].daysToRepeat[i].dayOfWeek
+                                                  + infoToAlarm[indexOfLast].daysToRepeat[i].dayOfWeek
                                                   - currentTime.getDay() + 7)
                             }
 
@@ -273,6 +276,7 @@ Item {
             }
 
             newTimer.delay(1000 * remainingTime.getRemainingTimeBySeconds(), displayAlarm)
+
         }
     }
 
@@ -479,7 +483,7 @@ Item {
                 onClicked: {
                     popup.close()
                     playMusic.stop()
-                    alarmListView.handleAlarm()
+//                    alarmListView.handleAlarm()
                 }
             }
 

@@ -1,0 +1,37 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Mp3Player.qml</file>
+        <file>ListMusic.qml</file>
+        <file>Pictures/play-circle-solid.svg</file>
+        <file>Pictures/list-solid.svg</file>
+        <file>Pictures/step-backward-solid.svg</file>
+        <file>Pictures/step-forward-solid.svg</file>
+        <file>Pictures/volume-up-solid.svg</file>
+        <file>Pictures/pause-circle-solid.svg</file>
+        <file>Pictures/folder-open-solid.svg</file>
+        <file>Pictures/stop-solid.svg</file>
+        <file>DeleteDialog.qml</file>
+        <file>Pictures/plus-circle-solid.svg</file>
+        <file>Pictures/play-circle-regular.svg</file>
+        <file>Pictures/albumcover.png</file>
+        <file>Pictures/background-powerpoint-cong-nghe-17.jpg</file>
+        <file>Pictures/element_list.png</file>
+        <file>Pictures/free-recycle-bin-icon-vector-recycle-bin-icon-115534132079jvhnualpn.png</file>
+        <file>Pictures/windows-media-player-8.png</file>
+        <file>Visualizer.qml</file>
+        <file>BarEntity.qml</file>
+        <file>Background.qml</file>
+        <file>meshes/circle.obj</file>
+        <file>meshes/progressbar.obj</file>
+        <file>InfomationMp3.qml</file>
+        <file>Others.qml</file>
+        <file>TumBlerTimer.qml</file>
+        <file>Pictures/imuzik.png</file>
+        <file>Pictures/keeng.png</file>
+        <file>Pictures/nct.jpg</file>
+        <file>Pictures/nhac_vn.png</file>
+        <file>Pictures/youtube.png</file>
+        <file>Pictures/zingmp3.png</file>
+        <file>SpectrumAnimation.qml</file>
+    </qresource>
+</RCC>
