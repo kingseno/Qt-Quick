@@ -33,8 +33,8 @@
                     "repeat": false
                 }
             ],
-            "hour": 0,
-            "label": "kiss you and then",
+            "hour": 3,
+            "label": "",
             "minute": 0,
             "month": 0,
             "repeat": false,
@@ -62,46 +62,6 @@
                 },
                 {
                     "dayOfWeek": 4,
-                    "repeat": true
-                },
-                {
-                    "dayOfWeek": 5,
-                    "repeat": true
-                },
-                {
-                    "dayOfWeek": 6,
-                    "repeat": false
-                }
-            ],
-            "hour": 4,
-            "label": "fuck you",
-            "minute": 0,
-            "month": 0,
-            "repeat": true,
-            "year": 0
-        },
-        {
-            "activated": true,
-            "day": 0,
-            "daysToRepeat": [
-                {
-                    "dayOfWeek": 0,
-                    "repeat": false
-                },
-                {
-                    "dayOfWeek": 1,
-                    "repeat": false
-                },
-                {
-                    "dayOfWeek": 2,
-                    "repeat": false
-                },
-                {
-                    "dayOfWeek": 3,
-                    "repeat": false
-                },
-                {
-                    "dayOfWeek": 4,
                     "repeat": false
                 },
                 {
@@ -113,89 +73,9 @@
                     "repeat": false
                 }
             ],
-            "hour": 15,
-            "label": "",
-            "minute": 5,
-            "month": 0,
-            "repeat": false,
-            "year": 0
-        },
-        {
-            "activated": true,
-            "day": 0,
-            "daysToRepeat": [
-                {
-                    "dayOfWeek": 0,
-                    "repeat": false
-                },
-                {
-                    "dayOfWeek": 1,
-                    "repeat": false
-                },
-                {
-                    "dayOfWeek": 2,
-                    "repeat": false
-                },
-                {
-                    "dayOfWeek": 3,
-                    "repeat": false
-                },
-                {
-                    "dayOfWeek": 4,
-                    "repeat": false
-                },
-                {
-                    "dayOfWeek": 5,
-                    "repeat": false
-                },
-                {
-                    "dayOfWeek": 6,
-                    "repeat": false
-                }
-            ],
-            "hour": 15,
-            "label": "",
-            "minute": 55,
-            "month": 0,
-            "repeat": false,
-            "year": 0
-        },
-        {
-            "activated": true,
-            "day": 0,
-            "daysToRepeat": [
-                {
-                    "dayOfWeek": 0,
-                    "repeat": false
-                },
-                {
-                    "dayOfWeek": 1,
-                    "repeat": false
-                },
-                {
-                    "dayOfWeek": 2,
-                    "repeat": false
-                },
-                {
-                    "dayOfWeek": 3,
-                    "repeat": false
-                },
-                {
-                    "dayOfWeek": 4,
-                    "repeat": false
-                },
-                {
-                    "dayOfWeek": 5,
-                    "repeat": false
-                },
-                {
-                    "dayOfWeek": 6,
-                    "repeat": false
-                }
-            ],
-            "hour": 15,
-            "label": "",
-            "minute": 57,
+            "hour": 1,
+            "label": "Hello World",
+            "minute": 4,
             "month": 0,
             "repeat": false,
             "year": 0

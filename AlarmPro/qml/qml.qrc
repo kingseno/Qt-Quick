@@ -9,5 +9,6 @@
         <file>CountDown/CountDown.qml</file>
         <file>StopWatch/StopWatch.qml</file>
         <file>Util/Util.mjs</file>
+        <file>StopWatch/GenieEffect.qml</file>
     </qresource>
 </RCC>

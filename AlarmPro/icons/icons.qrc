@@ -10,5 +10,7 @@
         <file>alarm/32x32/times-solid.svg</file>
         <file>alarm/32x32/trash-alt-regular.svg</file>
         <file>alarm/32x32/bell-solid.svg</file>
+        <file>alarm/32x32/iron-man.jpg</file>
+        <file>alarm/32x32/plane3D/plane.obj</file>
     </qresource>
 </RCC>

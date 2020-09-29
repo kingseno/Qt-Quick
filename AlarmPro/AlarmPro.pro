@@ -1,4 +1,4 @@
-QT += core quick quickcontrols2
+QT += core quick quickcontrols2 3dcore 3drender 3dinput 3dlogic 3dquick 3dquickextras
 
 CONFIG += c++11
 
@@ -15,7 +15,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         configuration.cpp \
-        main.cpp
+				main.cpp
 
 RESOURCES += \
  icons/icons.qrc \

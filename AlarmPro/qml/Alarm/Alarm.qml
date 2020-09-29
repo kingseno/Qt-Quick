@@ -542,6 +542,7 @@ Item {
         source: "qrc:/music/lovingly.mp3"
         loops: Audio.Infinite
     }
+
 //    states: [
 //        State {
 //            name: "hideNotification"
