@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>qtquickcontrols2.conf</file>
+        <file>ModelMoney.qml</file>
+        <file>ModelDelegate.qml</file>
+        <file>ModelAdd.qml</file>
+        <file>ModelDialogDate.qml</file>
+        <file>TumblerDelegate.qml</file>
+    </qresource>
+    <qresource prefix="/icon"/>
+</RCC>

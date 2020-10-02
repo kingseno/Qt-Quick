@@ -1,0 +1,25 @@
+<RCC>
+    <qresource prefix="/icon">
+        <file>icon/bank_icon.png</file>
+        <file>icon/green_dola.png</file>
+        <file>icon/money_stack.png</file>
+        <file>icon/money_tree.png</file>
+        <file>icon/summer_beach.png</file>
+        <file>icon/treasure_chest.png</file>
+        <file>icon/wallet_purse.png</file>
+        <file>icon/wallet_purse_2.png</file>
+        <file>icon/help_circle.svg</file>
+        <file>icon/calendar.svg</file>
+        <file>icon/menu.svg</file>
+        <file>icon/align-left.svg</file>
+        <file>icon/shopping-cart.svg</file>
+        <file>icon/star.svg</file>
+        <file>icon/truck.svg</file>
+        <file>icon/underline.svg</file>
+        <file>icon/book.svg</file>
+        <file>icon/heart.svg</file>
+        <file>icon/home.svg</file>
+        <file>icon/bar-chart-2.svg</file>
+    </qresource>
+    <qresource prefix="/"/>
+</RCC>
