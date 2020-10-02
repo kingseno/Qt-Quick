@@ -119,7 +119,6 @@ Dialog{
                 implicitHeight: 40
                 implicitWidth: 100
                 visible: is_show && root.statusPlay
-//                rotation: 180
                 property int preVal;
                 property int curVal;
                 RowLayout{

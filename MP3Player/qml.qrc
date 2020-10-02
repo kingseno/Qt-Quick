@@ -33,5 +33,7 @@
         <file>Pictures/youtube.png</file>
         <file>Pictures/zingmp3.png</file>
         <file>SpectrumAnimation.qml</file>
+        <file>Animation3D.qml</file>
+        <file>meshes/music_note (1).obj</file>
     </qresource>
 </RCC>

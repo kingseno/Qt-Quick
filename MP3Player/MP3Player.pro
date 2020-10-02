@@ -1,4 +1,4 @@
-QT += quick multimedia quickcontrols2 3dcore 3dquick qml
+QT += quick multimedia quickcontrols2 qml 3drender 3dinput 3dlogic 3dquickextras 3dcore 3dquick
 
 QT_OPENGL=desktop
 

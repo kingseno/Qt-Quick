@@ -55,7 +55,7 @@ Item {
                     interval: 100
                     onTriggered:  {
                         delegate.preVal = delegate.curVal
-                        delegate.curVal = Math.random()*100 + 50
+                        delegate.curVal = Math.random()*140 + 10
                         animation1.start()
                         animation2.start()
                     }

@@ -5,14 +5,16 @@ import QtMultimedia 5.9
 import QtQuick.Dialogs 1.2
 import QtQml 2.14
 import QtGraphicalEffects 1.0
+import QtQuick.Scene3D 2.0
 
 ApplicationWindow {
     id: root
     visible: true
     width: 1300
-    height: 897
+    height: 897 + menubar.height
     maximumWidth: 1300
-    maximumHeight: 897
+    maximumHeight: 897 + menubar.height
+
     title: qsTr("Mp3 Player")
 //    flags: Qt.Window | Qt.FramelessWindowHint // hide title ApplicationWindow
 
@@ -46,11 +48,41 @@ ApplicationWindow {
         }
     }
 
+    menuBar: MenuBar{
+        id: menubar
+        Menu{
+            title: qsTr("&File")
+            MenuItem{
+                text: qsTr("&Open")
+                icon.name: "document-open"
+                onTriggered: openProcess();
+            }
+            MenuItem{
+                text: qsTr("&Close")
+            }
+            MenuItem{
+                text: qsTr("&Exit")
+                onTriggered: root.close()
+            }
+        }
+        Menu{
+            title: qsTr("&View")
+            MenuItem{
+                text: qsTr("&List Mp3")
+                onTriggered: mp3.open();
+            }
+            MenuItem{
+                text: qsTr("&Close")
+            }
+        }
+    }
+
     MouseArea {
         id: iMouseArea
         property int prevX: 0
         property int prevY: 0
         anchors.fill: parent
+        focus: true
         onClicked: control.visible = false
         onPressed: { prevX = mouse.x; prevY = mouse.y }
         onPositionChanged:{
@@ -62,6 +94,11 @@ ApplicationWindow {
             root.y += deltaY;
             prevY = mouse.y - deltaY;
         }
+        Keys.onLeftPressed: previousProcess()
+        Keys.onRightPressed: nextProcess()
+        Keys.onSpacePressed: (statusPlay == true) ? pauseProcess() : playProcess()
+        Keys.onUpPressed: control.decrease()
+        Keys.onDownPressed: control.increase()
     }
 
     onClosing: {
@@ -135,11 +172,53 @@ ApplicationWindow {
                     id: page1
                     Image {
                           id: image
+                          visible: false
                           sourceSize.width: 300
                           sourceSize.height: 300
                           anchors.centerIn: parent
                           source: "qrc:/Pictures/windows-media-player-8.png"
                           fillMode: Image.PreserveAspectFit
+                    }
+                    ShaderEffect {
+                        id: genieEffect
+                        width: 300
+                        height: 300
+                        anchors.centerIn: parent
+                        property variant source: image
+                        property bool minimized: false
+
+                        property real minimize: 0.0
+                        SequentialAnimation on minimize {
+                            id: animMinimize
+                            running: genieEffect.minimized
+                            PauseAnimation { duration: 300 }
+                            NumberAnimation { to: 1; duration: 700; easing.type: Easing.InOutSine }
+                            PauseAnimation { duration: 1000 } }
+                        SequentialAnimation on minimize {
+                            id: animNormalize
+                            running: !genieEffect.minimized
+                            NumberAnimation { to: 0; duration: 700; easing.type: Easing.InOutSine }
+                            PauseAnimation { duration: 1300 }
+                        }
+                        vertexShader: " uniform highp mat4 qt_Matrix;
+                                        attribute highp vec4 qt_Vertex;
+                                        attribute highp vec2 qt_MultiTexCoord0;
+                                        varying highp vec2 qt_TexCoord0;
+                                        uniform highp float minimize;
+                                        uniform highp float width;
+                                        uniform highp float height;
+                                        void main() {
+                                        qt_TexCoord0 = qt_MultiTexCoord0;
+                                        highp vec4 pos = qt_Vertex;
+                                        pos.y = mix(qt_Vertex.y, height, minimize);
+                                        pos.x = mix(qt_Vertex.x, width, minimize);
+                                        gl_Position = qt_Matrix * pos; }"
+                    }
+
+                    MouseArea{
+                        anchors.fill: parent
+                        id: mousePage1
+                        onClicked: genieEffect.minimized = !genieEffect.minimized
                     }
                 }
                 Item{
@@ -536,6 +615,34 @@ ApplicationWindow {
         id: spectrumAnimation
         y:  250
 
+    }
+
+    Scene3D {
+        width: 200
+        height: 200
+        x: 0
+        y: 740
+
+        Animation3D {
+        }
+    }
+
+    Scene3D {
+        width: 200
+        height: 200
+        x: 60
+        y: 700
+
+        Animation3D {}
+    }
+
+    Scene3D {
+        width: 200
+        height: 200
+        x: 100
+        y: 740
+        Animation3D {
+        }
     }
 
     //Animation

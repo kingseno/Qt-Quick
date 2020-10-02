@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import QtQuick.Controls 2.5
+import QtGraphicalEffects 1.0
 
 Item {
     anchors.fill: parent
@@ -111,15 +112,37 @@ Item {
         cellWidth: 100
         model: contactModel
         delegate: Image {
+            id: sourceImage
             source: name
-            sourceSize.width:  100
-            sourceSize.height:  100
+            sourceSize.width:  95
+            sourceSize.height:  95
+            x: 5
+            y: 5
+
+            ShaderEffect {
+                id: effect
+                width: 95;
+                height: 95
+                property variant source: sourceImage
+                property real redChannel: 0.3
+                visible: false
+
+                fragmentShader:
+                    "varying highp vec2 qt_TexCoord0;
+                    uniform sampler2D source;
+                    uniform lowp float qt_Opacity;
+                    uniform lowp float redChannel;
+                    void main() {
+                    gl_FragColor = texture2D(source, qt_TexCoord0) *vec4(redChannel, 1.0, 1.0, 1.0) * qt_Opacity; }"
+            }
+
             MouseArea {
                 id: iMouseImage
                 anchors.fill: parent
                 onClicked: {
                     gridView.currentIndex = index
                     service.openService(gridView.currentIndex);
+                    effect.visible = true
                 }
             }
         }

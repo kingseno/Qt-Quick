@@ -2,6 +2,7 @@ import QtQuick 2.0
 import QtGraphicalEffects 1.0
 
 Item {
+    id : information
     anchors.fill: parent
 
     ListModel {
@@ -36,15 +37,9 @@ Item {
 
     }
 
-    ListView{
-        anchors.fill: parent
-        spacing: 20
-        anchors.margins: 10
-        anchors.leftMargin: 50
-        anchors.rightMargin: 50
-        model: leftGrid
-
-        delegate: Item {
+    Component{
+        id: delegateList
+        Item{
             width: parent.width
             height: parent.height/5
 
@@ -57,5 +52,16 @@ Item {
 
             }
         }
+    }
+
+    ListView{
+        anchors.fill: parent
+        spacing: 20
+        anchors.margins: 10
+        anchors.leftMargin: 50
+        anchors.rightMargin: 50
+        model: leftGrid
+
+        delegate: delegateList
     }
 }
