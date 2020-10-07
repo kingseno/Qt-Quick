@@ -23,10 +23,10 @@ ApplicationWindow {
     property bool isnewList: true
     property var tempIndex: mp3.list.currentIndex
     property var current_Index: mp3.list.currentIndex
-    property string albumArtist: "Unknow Album"
-    property string author: "Unknow Author"
-    property string titleMp3: "Unknow Title"
-    property string yearComposed: "Unknow Year"
+    property string albumArtist: "Unknown Album"
+    property string author: "Unknown Author"
+    property string titleMp3: "Unknown Title"
+    property string yearComposed: "Unknown Year"
 
     Image{
         id: background

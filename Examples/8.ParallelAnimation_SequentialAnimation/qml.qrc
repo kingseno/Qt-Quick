@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>bell-solid.svg</file>
+    </qresource>
+</RCC>

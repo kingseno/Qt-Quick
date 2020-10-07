@@ -1,0 +1,52 @@
+{
+    "config": [
+        {
+            "CurrentDuration": 0,
+            "CurrentIndex": 0,
+            "CurrentPossition": 0,
+            "CurrentVolume": 0.5,
+            "Mp3Name": "ChacAiDoSeVe-SonTungMTP-3597661 - Copy (2)",
+            "Source": "file:///D:/DinhPham/Training/QT/Practise/Qt-Quick/MP3Player/Musics/ChacAiDoSeVe-SonTungMTP-3597661 - Copy (2).mp3"
+        },
+        {
+            "CurrentDuration": 0,
+            "CurrentIndex": 1,
+            "CurrentPossition": 0,
+            "CurrentVolume": 0.5,
+            "Mp3Name": "ChacAiDoSeVe-SonTungMTP-3597661 - Copy (3)",
+            "Source": "file:///D:/DinhPham/Training/QT/Practise/Qt-Quick/MP3Player/Musics/ChacAiDoSeVe-SonTungMTP-3597661 - Copy (3).mp3"
+        },
+        {
+            "CurrentDuration": 0,
+            "CurrentIndex": 2,
+            "CurrentPossition": 0,
+            "CurrentVolume": 0.5,
+            "Mp3Name": "ChacAiDoSeVe-SonTungMTP-3597661 - Copy (4)",
+            "Source": "file:///D:/DinhPham/Training/QT/Practise/Qt-Quick/MP3Player/Musics/ChacAiDoSeVe-SonTungMTP-3597661 - Copy (4).mp3"
+        },
+        {
+            "CurrentDuration": 0,
+            "CurrentIndex": 3,
+            "CurrentPossition": 0,
+            "CurrentVolume": 0.5,
+            "Mp3Name": "ChacAiDoSeVe-SonTungMTP-3597661 - Copy",
+            "Source": "file:///D:/DinhPham/Training/QT/Practise/Qt-Quick/MP3Player/Musics/ChacAiDoSeVe-SonTungMTP-3597661 - Copy.mp3"
+        },
+        {
+            "CurrentDuration": 0,
+            "CurrentIndex": 4,
+            "CurrentPossition": 0,
+            "CurrentVolume": 0.5,
+            "Mp3Name": "ChacAiDoSeVe-SonTungMTP-3597661",
+            "Source": "file:///D:/DinhPham/Training/QT/Practise/Qt-Quick/MP3Player/Musics/ChacAiDoSeVe-SonTungMTP-3597661.mp3"
+        }
+    ],
+    "current": {
+        "CurrentDuration": 274151,
+        "CurrentIndex": 2,
+        "CurrentPossition": 254912,
+        "CurrentVolume": 0.76,
+        "Mp3Name": "ChacAiDoSeVe-SonTungMTP-3597661 - Copy (4)",
+        "Source": "file:///D:/DinhPham/Training/QT/Practise/Qt-Quick/MP3Player/Musics/ChacAiDoSeVe-SonTungMTP-3597661 - Copy (4).mp3"
+    }
+}
