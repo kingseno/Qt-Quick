@@ -103,7 +103,6 @@ void Configuration::saveChanges (QVariantList alarmInfo) {
             configJsonArr.append (configJsonObject);
 
         }
-
         newConfig.insert("config", configJsonArr);
 
         QJsonDocument doc(newConfig);

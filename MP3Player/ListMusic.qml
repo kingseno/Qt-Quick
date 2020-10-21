@@ -299,6 +299,21 @@ Dialog{
                 dialog1.visible = false;
             }
         }
+
+
+        Rectangle {
+            id: rect2
+            color: 'white'
+            width: 100
+            height: 100
+
+            Component.onCompleted: {
+                rect2.color = 'red'
+                rect2.width = 200
+            }
+        }
+
+
     }
    function loadListMusic(){
        mp3.list.model.clear();
