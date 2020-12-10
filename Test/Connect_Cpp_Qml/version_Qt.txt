@@ -1,0 +1,2 @@
+qt 5.1.1 enterprise
+qt creator 4.6.2 enterprise
