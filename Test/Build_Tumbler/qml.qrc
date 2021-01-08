@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>btn_circle_setting_line.svg</file>
+    </qresource>
+</RCC>
